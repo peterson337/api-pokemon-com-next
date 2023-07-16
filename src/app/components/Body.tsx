@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Image from 'next/image'
 
-  type PokemonAbility = {
+type PokemonAbility = {
   ability: {
     name: string;
     url: string;
@@ -20,24 +20,22 @@ type PokemonSpecies = {
   url: string;
 };
 
+type GameVersion = {
+  name: string;
+};
+
+type GameIndices = {
+  version: GameVersion;
+};
+
 type Api = {
   abilities: PokemonAbility[];
   sprites: PokemonSprites;
   species: PokemonSpecies;
-  gameIndices: GameIndices[],
+  game_indices: GameIndices[];
 };
 
-type GameIndices = {
-    version: {
-        name:string;
-    }
 
-}
-
-type Version = {
-    name: string;
-
-}
 export const Body = () => {
         const [array, setArray] = useState<Api[]>([]);
         const [input, setInput] = useState<number>(1);
@@ -145,6 +143,12 @@ export const Body = () => {
                       {ability.ability.name}
                     </p>
                   ))}
+
+                {/*       {val.game_indices.map((game) => (
+                      <p
+                      className='flex flex-row flex-wrap'
+                       key={game.version.name}>{game.version.name}</p>
+                    ))} */}
                 </div>
               </div>
             );
